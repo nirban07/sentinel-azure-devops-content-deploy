@@ -9,6 +9,36 @@ trigger:
 variables:
 - group: nirban-first-vgrp
 
+parameters:
+  - name: SubscriptionName
+    displayName: "Enter Subscription Name"
+    type: string
+    default: MCT
+    
+  - name: WebAppName
+    displayName: 'Enter WebAppName'
+    type: string
+    default: webapp
+
+  - name: ResourceGroupName
+    displayName: "Enter ResourceGroupName"
+    type: string
+    default: rg-new
+
+  - name: UserAccount
+    displayName: "Enter UserAccount for Access like:- test@xyx.com"
+    type: string
+    default: nirban
+
+  - name: AccessType
+    displayName: "Enter Access Type"
+    type: string
+    default: Contributor
+    values:
+        - Reader
+        - Contributor
+        - Owner
+
 pool:
   vmImage: ubuntu-latest
 
@@ -21,4 +51,5 @@ steps:
     echo See https://aka.ms/yaml
     echo this is my name
     echo $(name)
+    echo $(parameters.SubscriptionName)
   displayName: 'Run a multi-line script'
